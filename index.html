@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f35ab7" />
+  <title>Alexis Wellness Companion</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="sparkle s1">✦</div>
+  <div class="sparkle s2">🦋</div>
+  <div class="sparkle s3">♡</div>
+  <div class="sparkle s4">✿</div>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="profile">
+        <div class="avatar-wrap">
+          <img src="assets/alexis-avatar.png" alt="Princess avatar for Alexis" />
+        </div>
+        <h2>Alexis 💕👑</h2>
+        <p>Wellness Queen 👑</p>
+      </div>
+
+      <nav class="nav">
+        <a href="#home" class="active">🏠 Home</a>
+        <a href="#meds">💊 Medications</a>
+        <a href="#water">💧 Water Tracker</a>
+        <a href="#mood">💕 Mood Tracker</a>
+        <a href="#streak">🔥 Streaks</a>
+        <a href="#verses">📖 Bible & Quotes</a>
+        <a href="#love">💌 Love Notes</a>
+      </nav>
+
+      <div class="side-note">
+        <div>💜</div>
+        <p>You are loved.<br>You are worthy.<br>You are enough.</p>
+      </div>
+    </aside>
+
+    <main class="main" id="home">
+      <header class="hero">
+        <div>
+          <p class="script-small" id="timeGreeting">Good Morning,</p>
+          <h1>Alexis♡</h1>
+          <p class="subtitle">You are loved, you are strong, you are enough. 💜</p>
+        </div>
+
+        <div class="date-card">
+          <div>🗓️ <strong id="todayDate"></strong></div>
+          <hr>
+          <div>⏰ <strong id="clock"></strong></div>
+        </div>
+      </header>
+
+      <section class="cards top-cards">
+        <article class="card" id="verses">
+          <p class="eyebrow">🌸 Daily Inspiration</p>
+          <h3 id="dailyQuote"></h3>
+          <span class="heart-doodle">♡</span>
+        </article>
+
+        <article class="card">
+          <p class="eyebrow purple">✝️ Bible Verse of the Day</p>
+          <h3 id="verseText"></h3>
+          <p class="verse-ref" id="verseRef"></p>
+        </article>
+
+        <article class="card" id="love">
+          <p class="eyebrow">💌 Richard’s Love Note</p>
+          <h3 id="loveNote"></h3>
+          <span class="glow-heart">💗</span>
+        </article>
+      </section>
+
+      <section class="dashboard">
+        <article class="card meds-card" id="meds">
+          <div class="card-header">
+            <h2>💊 Today's Medications</h2>
+            <button id="showAddForm">+ Add Medication</button>
+          </div>
+
+          <div class="tabs">
+            <button class="tab active" data-filter="all">✨ All</button>
+            <button class="tab" data-filter="Morning">☀️ Morning</button>
+            <button class="tab" data-filter="Afternoon">🌤️ Afternoon</button>
+            <button class="tab" data-filter="Night">🌙 Night</button>
+          </div>
+
+          <form id="addMedForm" class="add-form hidden">
+            <input id="medName" type="text" placeholder="Medication name" required />
+            <input id="medDose" type="text" placeholder="Dose, ex: 50mg" />
+            <input id="medTime" type="time" required />
+            <select id="medCategory">
+              <option>Morning</option>
+              <option>Afternoon</option>
+              <option>Night</option>
+            </select>
+            <button type="submit">Save Medication 💕</button>
+          </form>
+
+          <div class="med-list" id="medList"></div>
+
+          <p class="mini-message">You’ve got this, Alexis! 💗 <span>👑</span></p>
+        </article>
+
+        <div class="right-column">
+          <article class="card water-card" id="water">
+            <div class="card-header">
+              <h2>💧 Water Tracker</h2>
+              <span>64 oz goal</span>
+            </div>
+            <div class="water-cups" id="waterGrid"></div>
+            <p id="waterText" class="center-text"></p>
+            <div class="green-progress"><div id="waterProgress"></div></div>
+            <button class="small-reset" id="resetWater">Reset Water</button>
+          </article>
+
+          <article class="card mood-card" id="mood">
+            <h2>💗 How are you feeling?</h2>
+            <p class="mood-subtitle">It’s okay to feel however you feel. You are not alone. 💜</p>
+            <div class="mood-grid" id="moodGrid">
+              <button data-mood="Amazing"><img src="assets/moods/amazing.png" alt="Amazing mood avatar"><small>Amazing</small></button>
+              <button data-mood="Good"><img src="assets/moods/good.png" alt="Good mood avatar"><small>Good</small></button>
+              <button data-mood="Okay"><img src="assets/moods/okay.png" alt="Okay mood avatar"><small>Okay</small></button>
+              <button data-mood="Struggling"><img src="assets/moods/struggling.png" alt="Struggling mood avatar"><small>Struggling</small></button>
+              <button data-mood="Anxious"><img src="assets/moods/anxious.png" alt="Anxious mood avatar"><small>Anxious</small></button>
+              <button data-mood="Need Support"><img src="assets/moods/support.png" alt="Need support mood avatar"><small>Need Support</small></button>
+            </div>
+            <p id="moodText" class="center-text">No mood selected yet.</p>
+            <a id="sendMoodBtn" class="send-mood disabled" href="#" aria-disabled="true">Send mood to Richard 💌</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="cards bottom-cards">
+        <article class="card streak-card" id="streak">
+          <p class="eyebrow purple">🔥 Medication Streak</p>
+          <h2><span id="streakCount">0</span></h2>
+          <p>Days</p>
+          <small>Keep it up, Queen! 👑</small>
+          <div class="streak-line">
+            <span class="done">✓<small>1 Day</small></span>
+            <span id="sevenBadge">✓<small>7 Days</small></span>
+            <span id="thirtyBadge">✓<small>30 Days</small></span>
+            <span id="hundredBadge">✓<small>100 Days</small></span>
+          </div>
+        </article>
+
+        <article class="card achievement-card">
+          <p class="eyebrow purple">🏆 Recent Achievements</p>
+          <ul>
+            <li>🦋 <strong>7 Day Streak</strong><br><small>You’re on fire!</small></li>
+            <li>💧 <strong>Hydration Hero</strong><br><small>Reached your water goal!</small></li>
+            <li>⭐ <strong>Self-Care Star</strong><br><small>Taking care of YOU!</small></li>
+          </ul>
+        </article>
+
+        <article class="card reminder-card">
+          <p class="eyebrow">🔔 Today’s Reminder</p>
+          <ul>
+            <li>♡ Take your medications</li>
+            <li>♡ Drink your water</li>
+            <li>♡ Be kind to yourself</li>
+            <li>♡ You are enough</li>
+          </ul>
+          <div class="neon-crown">♕</div>
+        </article>
+      </section>
+
+      <footer>
+        🦋 ✨ <span id="bottomVerse"></span> ✨ 🦋
+      </footer>
+    </main>
+  </div>
+
+  <div id="confetti"></div>
+  <script src="app.js"></script>
+</body>
+</html>
